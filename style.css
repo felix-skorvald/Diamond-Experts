@@ -2,7 +2,9 @@ body{
 	margin: 0 auto;
 }
 .container{
+	border: 10px double #a43d96;
 	background-color: #c95e9f;
+	border-bottom: none;
 }
 .container .img-title {
 	display: flex;
@@ -13,6 +15,7 @@ body{
 .container .img-title .img-2{
 	width: 30%;
 	border-radius: 20%;
+	box-shadow: 5px 5px 5px #8d469a;
 }
 .container .img-title .img-1{
 	width: 70%;
@@ -24,6 +27,8 @@ body{
 	justify-content: center;
 	align-items: center;
 	border-bottom: 10px double #a43d96;
+
+	
 	
 }
 .name .input-name{
@@ -33,18 +38,23 @@ body{
 }
 .name .button-start:hover{
 background-color: #ed70fd;
+	color: black;
+	scale: 1.1;
 }
 .name .button-start{
+	transition: all 1s;
 	margin-top: 40px;
 	height: 50px;
 	border-radius: 10px;
 	background-color: 
 	#8d469a;
 	color: white;
-	font-weight: bold;
+
 	border: none;
 	cursor: pointer;
 	padding: 10px;
 	margin: 20px;
 }
-
+.name{
+	box-shadow: inset 5px 5px 50px 10px rgb(167, 47, 167);
+}
