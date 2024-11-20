@@ -7,6 +7,9 @@ function randomizeWord(minLetters, maxLetters) {
     let word = words[i];
     do {
         i++;
+        if (i > words.length) {
+            i = 0;
+        }
         word = words[i];
     } while (word.length < minLetters || word.length > maxLetters);
     {
