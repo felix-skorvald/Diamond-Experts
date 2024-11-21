@@ -7,8 +7,11 @@ let guessedLetters = [];
 let wrongGuesses = [];
 let maxAttempts = 6;
 let gameBoard = Array(testWord.length).fill('_');
+let score = 0;
 
 const KEY = 'scores';
+
+keyboardSection.innerHTML = gameBoard;
 
 document.addEventListener('keydown', (event) => {
     const pressedLetter = event.key.toLowerCase();
@@ -17,16 +20,34 @@ document.addEventListener('keydown', (event) => {
     if (alphabet.test(pressedLetter)) {
         console.log(`The ${pressedLetter} key was pressed.`);
         userInput.innerHTML = `The ${pressedLetter} key was pressed.`;
+        guessedLetters.push(pressedLetter);
     } else {
         console.log('Invalid input. Please press a valid letter.');
         userInput.innerHTML = `Invalid input. Please press a valid letter.`;
     }
     console.log('Raw key input:', event.key);
+    console.log(guessedLetters);
 });
 
-// const handleGuess = (pressedLetter, word){
-//     letter = letter.toLowerCase();
-// };
+const handleGuess = (pressedLetter, testWord) => {
+    pressedLetter = pressedLetter.toLowerCase();
+    if (
+        guessedLetters.includes(pressedLetter) ||
+        wrongGuesses.includes(pressedLetter)
+    ) {
+        userInput.innerHTML = `Letter "${pressedLetter}" has already been guessed.`;
+    }
+
+    if (testWord.includes(pressedLetter)) {
+        for (let i = 0; i < testWord.length; i++) {
+            if (testWord[i] === pressedLetter) {
+                gameBoard[i] = pressedLetter;
+            }
+        }
+    }
+};
+
+handleGuess();
 
 // function highScores() {
 //     let json = localStorage.getItem(KEY);
