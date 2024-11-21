@@ -1,0 +1,1 @@
+let buttonStart=document.querySelector(".button-start")
