@@ -1,7 +1,7 @@
 .section-2 {
   background-color: #c95e9f;
   border: 10px double #a43d96;
-
+display: block;
   box-shadow: inset 5px 5px 50px 10px rgb(167, 47, 167);
  
 }
