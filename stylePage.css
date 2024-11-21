@@ -9,7 +9,6 @@ body {
     margin: 0;
 }
 
-
 .game-container {
     text-align: center;
     background-color: #ffffff;
@@ -17,31 +16,27 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 100%;
-    max-width: 350px; 
+    max-width: 350px;
     box-sizing: border-box;
 }
 
-
 h1 {
-    color: #4CAF50;
+    color: #4caf50;
     font-size: 36px;
     margin-bottom: 20px;
 }
-
 
 #hint {
     font-size: 18px;
     margin: 10px 0;
 }
 
-
 .alphabet-buttons {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); 
+    grid-template-columns: repeat(6, 1fr);
     gap: 5px;
     margin-top: 20px;
 }
-
 
 .alphabet-button {
     background-color: #f0f5f0;
@@ -52,9 +47,8 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    text-transform: uppercase; 
+    text-transform: uppercase;
 }
-
 
 .alphabet-button:hover {
     background-color: #45a049;
@@ -66,11 +60,9 @@ h1 {
     cursor: not-allowed;
 }
 
-
 #message {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
     color: #333;
->>>>>>> shweta
 }
