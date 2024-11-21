@@ -11,6 +11,7 @@ body{
 	background-color: 
 	#b95fad;
 	border-bottom: 10px double #a43d96;
+	
 }
 .container .img-title .img-2{
 	width: 30%;
@@ -49,7 +50,6 @@ background-color: #ed70fd;
 	background-color: 
 	#8d469a;
 	color: white;
-
 	border: none;
 	cursor: pointer;
 	padding: 10px;
