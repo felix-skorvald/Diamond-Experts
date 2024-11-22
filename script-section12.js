@@ -8,6 +8,7 @@ let errorMessage = document.querySelector(".error-message");
 
 const gameSection = document.querySelector(".game-section");
 let wordInGame = "";
+inputName.focus();
 
 function hideAllSections() {
     allSections.forEach((section) => {
