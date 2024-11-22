@@ -11,7 +11,7 @@
     </head>
     <body>
         <!-- Första section:skriva namn -->
-        <section class="container">
+        <section class="container all-section">
             <div class="img-title">
                 <img
                     src="img/234c5ac3-34fc-4e0b-a46c-2f700f12fcc2.png"
@@ -22,14 +22,15 @@
             </div>
 
             <div class="name">
-                <h1>Ditt Namn :</h1>
+                <h1 class="name-h1">Ditt Namn :</h1>
                 <input type="text" placeholder="Namn:" class="input-name" />
+				<div class="error-message"></div>
                 <button type="button" class="button-start">
                     Börja Spelet !
                 </button>
             </div>
         </section>
-        <section class="section-2 hidden">
+        <section class="section-2 hidden all-section">
             <div class="section2-title">
                 <h1>HÄNGA GUBBE</h1>
             </div>
@@ -42,7 +43,7 @@
                 <button class="button-back">Gå till Start</button>
             </div>
         </section>
-        <section class="hidden">
+        <section class="hidden all-section">
             <div class="game-container">
                 <figure class="">
                     <svg
@@ -131,7 +132,7 @@
                     <button class="alphabet-button">Z</button>
                 </div> -->
         </section>
-        <section>//HIGHSCORE placeholder</section>
+        <section class="all-section hidden">//HIGHSCORE placeholder</section>
         <!-- "YOU WIN" SCENE -->
         <section id="win-scene" class="win-gameover hidden">
             <h2 class="big-title">GRATTIS!</h2>
@@ -155,6 +156,8 @@
         </section>
 
 
-		<script src="script-section1.js"></script>
+		<script src="script-section12.js" type="module"></script>
+		<script src="word-randomizer.js" type="module"></script>
+		<script src="svenska-ord.js" type="module"></script>
     </body>
 </html>

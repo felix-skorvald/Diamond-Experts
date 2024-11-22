@@ -1,10 +1,14 @@
 .section-2 {
   background-color: #c95e9f;
   border: 10px double #a43d96;
-display: block;
   box-shadow: inset 5px 5px 50px 10px rgb(167, 47, 167);
+  
  
 }
+.hidden{
+	display: none;
+}
+
 .section2-title{
 	padding: 10px;
 	display: flex;
@@ -23,7 +27,7 @@ display: block;
 }
 .level button {
   padding: 30px;
-  margin: 25px;
+  margin: 40px;
   width: 200px;
   border-radius: 10px;
   border: none;
