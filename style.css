@@ -1,11 +1,13 @@
 body {
     margin: 0 auto;
 }
-
-.hidden {
-    display: none;
+.hidden{
+	display: none;
 }
-
+.name-h1{
+color: black;
+margin: 20px 0 20px 0;
+}
 .container {
     border: 10px double #a43d96;
     background-color: #c95e9f;
@@ -35,6 +37,12 @@ body {
     border-radius: 20%;
     padding: 20px;
     border: 0;
+}
+.error-message{
+	font-size: 30px;
+	margin: 20px;
+	color: #5f1b6b;
+	display: block;
 }
 .name .button-start:hover {
     background-color: #ed70fd;
