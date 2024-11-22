@@ -4,6 +4,12 @@ body {
 .hidden{
 	display: none;
 }
+.welcome-title{
+	color: #34043c;
+	box-shadow: 5px 5px 30px 3px #34043c;
+	padding: 20px;
+	font-size: 35px;
+}
 .name-h1{
 color: black;
 margin: 20px 0 20px 0;
