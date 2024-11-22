@@ -20,25 +20,29 @@ function restartHangMan() {
     legs.style.display = "none";
 }
 
+// Will rewrite this to fit with gamemechanics. Pair with Betuls code.
+
 testButton.addEventListener("click", () => {
     if (hangMan === 0) {
-        restartHangMan();
-        hangMan++;
-    } else if (hangMan === 1) {
         scaffold.style.display = "";
         hangMan++;
-    } else if (hangMan === 2) {
+    } else if (hangMan === 1) {
         head.style.display = "";
         hangMan++;
-    } else if (hangMan === 3) {
+    } else if (hangMan === 2) {
         body.style.display = "";
         hangMan++;
-    } else if (hangMan === 4) {
+    } else if (hangMan === 3) {
         arms.style.display = "";
         hangMan++;
-    } else {
+    } else if (hangMan === 4) {
         legs.style.display = "";
+        hangMan++;
+    } else {
         hangMan = 0;
-        //GAME OVER
+        //GAME OVER function
+        restartHangMan();
     }
 });
+
+export { restartHangMan };
