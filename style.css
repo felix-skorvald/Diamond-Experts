@@ -4,6 +4,12 @@ body {
 .hidden{
 	display: none;
 }
+.welcome-title{
+	color: #34043c;
+	box-shadow: 5px 5px 30px 3px #34043c;
+	padding: 20px;
+	font-size: 35px;
+}
 .name-h1{
 color: black;
 margin: 20px 0 20px 0;
@@ -12,6 +18,7 @@ margin: 20px 0 20px 0;
     border: 10px double #a43d96;
     background-color: #c95e9f;
     border-bottom: none;
+	min-height: 100vh;
 }
 .container .img-title {
     display: flex;
@@ -32,6 +39,10 @@ margin: 20px 0 20px 0;
     justify-content: center;
     align-items: center;
     border-bottom: 10px double #a43d96;
+	height: 100vh;
+}
+.name>*{
+	margin: 30px;
 }
 .name .input-name {
     border-radius: 20%;
