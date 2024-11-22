@@ -12,6 +12,7 @@ margin: 20px 0 20px 0;
     border: 10px double #a43d96;
     background-color: #c95e9f;
     border-bottom: none;
+	min-height: 100vh;
 }
 .container .img-title {
     display: flex;
@@ -32,6 +33,10 @@ margin: 20px 0 20px 0;
     justify-content: center;
     align-items: center;
     border-bottom: 10px double #a43d96;
+	height: 100vh;
+}
+.name>*{
+	margin: 30px;
 }
 .name .input-name {
     border-radius: 20%;
