@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* WIN- AND GAME OVER -SCENES */
+
+.win-gameover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button {
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: darkgray;
+}
+
+.big-title {
+    font-size: 110px;
+}
+
+.right-word-container {
+    text-align: center;
+    font-size: x-large;
+}
+
+#word-of-game {
+    font-size: 70px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden{
+	display: none;
+}
