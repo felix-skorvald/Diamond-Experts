@@ -25,7 +25,8 @@ document.addEventListener('keydown', (event) => {
     // If conditional down below is the game is over check code,
     // if the gameOver is true then ignore further input but keep the event listener
     if (gameOver) {
-        userInput.innerHTML = 'Game is over. Press restart to play again.';
+        userInput.innerHTML =
+            'Spelet är över. Tryck på starta om för att spela igen.';
         console.log('Game is over. No more input allowed.');
         return;
     }
@@ -35,11 +36,11 @@ document.addEventListener('keydown', (event) => {
 
     if (alphabet.test(pressedLetter)) {
         console.log(`The ${pressedLetter} key was pressed.`);
-        userInput.innerHTML = `The ${pressedLetter} key was pressed.`;
+        userInput.innerHTML = `Bokstaven ${pressedLetter} trycktes.`;
         handleGuess(pressedLetter, testWord);
     } else {
         console.log('Invalid input. Please press a valid letter.');
-        userInput.innerHTML = `Invalid input. Please press a valid letter.`;
+        userInput.innerHTML = 'Ogiltig inmatning. Tryck på en giltig bokstav.';
     }
     console.log('Raw key input:', event.key);
     console.log(guessedLetters);
@@ -51,7 +52,7 @@ export const handleGuess = (pressedLetter, word) => {
         guessedLetters.includes(pressedLetter) ||
         wrongGuesses.includes(pressedLetter)
     ) {
-        userInput.innerHTML = `Letter "${pressedLetter}" has already been guessed.`;
+        userInput.innerHTML = `Bokstaven "${pressedLetter}" har redan gissats.`;
         return;
     }
 
@@ -64,7 +65,7 @@ export const handleGuess = (pressedLetter, word) => {
             }
         }
         console.log(`Correct guess! Current board: ${gameBoard.join('   ')}`);
-        userInput.innerHTML = `Correct guess! Current board: ${gameBoard.join(
+        userInput.innerHTML = `Rätt gissning! Nuvarande bräde: ${gameBoard.join(
             ' '
         )}`;
     } else {
@@ -74,7 +75,7 @@ export const handleGuess = (pressedLetter, word) => {
                 maxAttempts - wrongGuesses.length
             }`
         );
-        userInput.innerHTML = `Wrong guess! Remaining attempts: ${
+        userInput.innerHTML = `Fel gissning! Återstående försök: ${
             maxAttempts - wrongGuesses.length
         }`;
     }
@@ -83,7 +84,7 @@ export const handleGuess = (pressedLetter, word) => {
 
     //Here is the code for deciding winning or losing condition.
     if (!gameBoard.includes('_')) {
-        resultScreen.innerHTML = 'You win!';
+        resultScreen.innerHTML = 'Du vann!';
         score++;
         gameOver = true;
         saveScores({
@@ -96,7 +97,7 @@ export const handleGuess = (pressedLetter, word) => {
         console.log('High Scores:', highScores());
         // We can add do you want to play again and play again button here
     } else if (wrongGuesses.length >= maxAttempts) {
-        resultScreen.innerHTML = `Game Over! The word was "${word}".`;
+        resultScreen.innerHTML = `Spelet är över! Ordet var "${word}".`;
         gameOver = true;
         saveScores({
             word: testWord,
@@ -150,39 +151,3 @@ export function highScores() {
 }
 
 console.log('LocalStorage after save:', localStorage.getItem(KEY));
-
-// // display function
-// function displayHighScores() {
-//     const scores = highScores();
-//     console.log('Scores to display:', scores);
-//     if (!scores || scores.length === 0) {
-//         highestScores.innerHTML = '<li>No high scores yet!</li>';
-//         return;
-//     }
-
-//     scores.forEach((score) => {
-//         const li = document.createElement('li');
-//         li.textContent = `${score.user}: ${score.score} - ${new Date(
-//             score.date
-//         ).toLocaleDateString()}`;
-//         highestScores.appendChild(li);
-//     });
-// }
-
-// displayHighScores();
-
-export function resetGame() {
-    guessedLetters = [];
-    wrongGuesses = [];
-    maxAttempts = 6;
-    gameBoard = Array(testWord.length).fill('_');
-    gameOver = false;
-    displayInitialBoard();
-    userInput.innerHTML = '';
-    resultScreen.innerHTML = '';
-    console.log('Game reset');
-}
-
-restartBtn.addEventListener('click', () => {
-    resetGame();
-});
