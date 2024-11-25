@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="style2.css" />
         <link rel="stylesheet" href="win-gameover.css" />
+        <script src="script-section12.js" type="module"></script>
         <title>Hangman</title>
     </head>
 
@@ -135,15 +136,34 @@
                     <button class="alphabet-button">Z</button>
                 </div> -->
         </section>
-        <section class="all-section hidden">//HIGHSCORE placeholder</section>
-        <!-- "YOU WIN" SCENE -->
-        <section id="win-scene" class="win-gameover hidden">
-            <h2 class="big-title">GRATTIS!</h2>
-            <h3>ANTAL FÖRSÖK:</h3>
-            <div class="buttons">
-                <button class="restart button">STARTA OM</button>
-                <button class="highscore button">HIGHSCORE</button>
-            </div>
+        <section class="all-section hidden">
+            <section>
+                <h1>Hangman Game</h1>
+                <p class="mystery-word"></p>
+            </section>
+            <section class="keyboard-container">
+                <div class="keyboard">
+                    <p class="user-input"></p>
+                </div>
+            </section>
+            <section class="result">
+                <h3 class="result-screen"></h3>
+                <p class="gameover"></p>
+                <button class="restart">Restart</button>
+            </section>
+            <section class="highest-scores-section">
+                <h2>Highest Scores</h2>
+                <ol class="highest-scores"></ol>
+            </section>
+            <!-- "YOU WIN" SCENE -->
+            <section id="win-scene" class="win-gameover hidden">
+                <h2 class="big-title">GRATTIS!</h2>
+                <h3>ANTAL FÖRSÖK:</h3>
+                <div class="buttons">
+                    <button class="restart button">STARTA OM</button>
+                    <button class="highscore button">HIGHSCORE</button>
+                </div>
+            </section>
         </section>
         <!-- "GAME OVER" SCENE -->
         <section id="game-over-scene" class="win-gameover hidden">
@@ -157,9 +177,5 @@
                 <button class="highscore button">HIGHSCORE</button>
             </div>
         </section>
-
-        <script src="script-section12.js" type="module"></script>
-        <script src="word-randomizer.js" type="module"></script>
-        <script src="svenska-ord.js" type="module"></script>
     </body>
 </html>
