@@ -4,6 +4,7 @@ const displaySection = document.querySelector('.mystery-word');
 const userInput = document.querySelector('.user-input');
 const resultScreen = document.querySelector('.result-screen');
 const highestScores = document.querySelector('.highest-scores');
+const restartBtn = document.querySelector('.restart');
 
 let testWord = 'frontend';
 let guessedLetters = [];
@@ -112,20 +113,6 @@ export const handleGuess = (pressedLetter, word) => {
 
 handleGuess();
 
-export function resetGame() {
-    guessedLetters = [];
-    wrongGuesses = [];
-    maxAttempts = 6;
-    gameBoard = Array(testWord.length).fill('_');
-    gameOver = false;
-    displayInitialBoard();
-    userInput.innerHTML = '';
-    resultScreen.innerHTML = '';
-    console.log('Game reset');
-}
-
-resetGame();
-
 // saving scores to the local storage starts here
 
 export function saveScores(newScore) {
@@ -141,11 +128,61 @@ export function saveScores(newScore) {
 
     localStorage.setItem(KEY, JSON.stringify(getScores));
     console.log('Scores saved:', getScores);
+    getScores.forEach((score) => {
+        const li = document.createElement('li');
+        li.textContent = `${score.user}: ${score.score} - ${new Date(
+            score.date
+        ).toLocaleDateString()}`;
+        highestScores.appendChild(li);
+    });
 }
+
+saveScores({
+    word: testWord,
+    user: userName,
+    score: score,
+    date: new Date().toString(),
+});
 
 export function highScores() {
     const json = localStorage.getItem(KEY);
     return json ? JSON.parse(json) : [];
 }
 
-// display function
+console.log('LocalStorage after save:', localStorage.getItem(KEY));
+
+// // display function
+// function displayHighScores() {
+//     const scores = highScores();
+//     console.log('Scores to display:', scores);
+//     if (!scores || scores.length === 0) {
+//         highestScores.innerHTML = '<li>No high scores yet!</li>';
+//         return;
+//     }
+
+//     scores.forEach((score) => {
+//         const li = document.createElement('li');
+//         li.textContent = `${score.user}: ${score.score} - ${new Date(
+//             score.date
+//         ).toLocaleDateString()}`;
+//         highestScores.appendChild(li);
+//     });
+// }
+
+// displayHighScores();
+
+export function resetGame() {
+    guessedLetters = [];
+    wrongGuesses = [];
+    maxAttempts = 6;
+    gameBoard = Array(testWord.length).fill('_');
+    gameOver = false;
+    displayInitialBoard();
+    userInput.innerHTML = '';
+    resultScreen.innerHTML = '';
+    console.log('Game reset');
+}
+
+restartBtn.addEventListener('click', () => {
+    resetGame();
+});
