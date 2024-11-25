@@ -7,6 +7,8 @@ let inputName = document.querySelector(".input-name");
 let errorMessage = document.querySelector(".error-message");
 
 const gameSection = document.querySelector(".game-section");
+const highScoreSection = document.querySelector(".high-score");
+const highScoreButton = document.querySelector(".high-score-button");
 let wordInGame = "";
 inputName.focus();
 
@@ -65,3 +67,8 @@ function startGame() {
     gameSection.classList.remove("hidden");
     restartHangMan();
 }
+
+highScoreButton.addEventListener("click", () => {
+    hideAllSections();
+    highScoreSection.classList.remove("hidden");
+});

@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="stylePage.css" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="style2.css" />
+        <link rel="stylesheet" href="game-section.css" />
+        <link rel="stylesheet" href="title-section.css" />
+        <link rel="stylesheet" href="difficulty-section.css" />
         <link rel="stylesheet" href="win-gameover.css" />
         <script src="script-section12.js" type="module"></script>
+        <script type="module" src="score.js"></script>
         <title>Hangman</title>
     </head>
 
@@ -101,9 +102,14 @@
                     </svg>
                 </figure>
             </div>
-            <p id="hint">
-                Hint: <span id="hint-text">_ _ _ _ _ _ _ _ _ _</span>
-            </p>
+            <p class="mystery-word"></p>
+            <!-- Here we put all the guessed, wrong letters -->
+            <div id="wrong-letters"></div>
+            <section class="keyboard-container">
+                <div class="keyboard">
+                    <p class="user-input"></p>
+                </div>
+            </section>
             <button id="test-button">Tryck för -försök</button>
             <p id="message"></p>
 
@@ -136,21 +142,7 @@
                     <button class="alphabet-button">Z</button>
                 </div> -->
         </section>
-        <section class="all-section hidden">
-            <section>
-                <h1>Hangman Game</h1>
-                <p class="mystery-word"></p>
-            </section>
-            <section class="keyboard-container">
-                <div class="keyboard">
-                    <p class="user-input"></p>
-                </div>
-            </section>
-            <section class="result">
-                <h3 class="result-screen"></h3>
-                <p class="gameover"></p>
-                <button class="restart">Restart</button>
-            </section>
+        <section class="high-score all-section hidden">
             <section class="highest-scores-section">
                 <h2>Highest Scores</h2>
                 <ol class="highest-scores"></ol>
