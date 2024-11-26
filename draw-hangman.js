@@ -22,7 +22,7 @@ function restartHangMan() {
 
 // Will rewrite this to fit with gamemechanics. Pair with Betuls code.
 
-testButton.addEventListener("click", () => {
+function drawHangMan(hangMan) {
     if (hangMan === 0) {
         scaffold.style.display = "";
         hangMan++;
@@ -43,6 +43,6 @@ testButton.addEventListener("click", () => {
         //GAME OVER function
         restartHangMan();
     }
-});
+};
 
-export { restartHangMan };
+export { restartHangMan, drawHangMan };

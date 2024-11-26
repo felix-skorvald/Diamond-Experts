@@ -45,30 +45,30 @@ buttonBack.addEventListener("click", () => {
     errorMessage.style.display = "none";
 });
 
-let easyButton = document.querySelector(".button-easy");
-let mediumButton = document.querySelector(".button-medium");
-let difficultButton = document.querySelector(".button-difficult");
+// let easyButton = document.querySelector(".button-easy");
+// let mediumButton = document.querySelector(".button-medium");
+// let difficultButton = document.querySelector(".button-difficult");
 
-easyButton.addEventListener("click", () => {
-    wordInGame = randomizeWord(10, 13);
-    startGame();
-});
-mediumButton.addEventListener("click", () => {
-    wordInGame = randomizeWord(13, 15);
-    startGame();
-});
-difficultButton.addEventListener("click", () => {
-    wordInGame = randomizeWord(15, 17);
-    startGame();
-});
+// easyButton.addEventListener("click", () => {
+//     wordInGame = randomizeWord(10, 13);
+//     startGame();
+// });
+// mediumButton.addEventListener("click", () => {
+//     wordInGame = randomizeWord(13, 15);
+//     startGame();
+// });
+// difficultButton.addEventListener("click", () => {
+//     wordInGame = randomizeWord(15, 17);
+//     startGame();
+// });
 
-function startGame() {
-    hideAllSections();
-    gameSection.classList.remove("hidden");
-    restartHangMan();
-}
+// function startGame() {
+//     hideAllSections();
+//     gameSection.classList.remove("hidden");
+//     restartHangMan()
+// }
 
-highScoreButton.addEventListener("click", () => {
-    hideAllSections();
-    highScoreSection.classList.remove("hidden");
-});
+// highScoreButton.addEventListener("click", () => {
+//     hideAllSections();
+//     highScoreSection.classList.remove("hidden");
+// });
