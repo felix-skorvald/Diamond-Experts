@@ -12,11 +12,16 @@ const highScoreButton = document.querySelector(".high-score-button");
 let wordInGame = "";
 inputName.focus();
 
+export function sendName(){
+
+    return inputName.value
+}
+
 function hideAllSections() {
     allSections.forEach((section) => {
         if (!section.classList.contains("hidden")) {
             section.classList.add("hidden");
-        }
+        } 
     });
 }
 

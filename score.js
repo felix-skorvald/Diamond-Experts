@@ -1,6 +1,7 @@
 // import { words } from './svenska-ord'
 import { restartHangMan, drawHangMan } from "./draw-hangman.js";
 import { randomizeWord } from "./word-randomizer.js";
+import { sendName } from "./script-section12.js";
 const displaySection = document.querySelector('.mystery-word');
 const userInput = document.querySelector('.user-input');
 const resultScreen = document.querySelector('.result-screen');
@@ -43,6 +44,8 @@ function hideAllSections() {
 }
 
 function startGame() {
+    userName=sendName()
+    console.log(userName)
     let gameBoard = Array(testWord.length).fill('_');
     hideAllSections();
     gameSection.classList.remove("hidden");
