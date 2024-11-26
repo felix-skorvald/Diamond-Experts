@@ -9,11 +9,10 @@ const restartBtn = document.querySelector('.restart');
 let allSections = document.querySelectorAll(".all-section");
 const gameSection = document.querySelector(".game-section");
 
-let testWord = 'frontend';
+let testWord ="";
 let guessedLetters = [];
 let wrongGuesses = [];
-let maxAttempts = 6;
-let gameBoard = Array(testWord.length).fill('_');
+let maxAttempts = 5;
 let score = 0;
 let gameOver = false;
 let userName = 'Player 1';
@@ -44,6 +43,7 @@ function hideAllSections() {
 }
 
 function startGame() {
+    let gameBoard = Array(testWord.length).fill('_');
     hideAllSections();
     gameSection.classList.remove("hidden");
     restartHangMan()
@@ -104,6 +104,7 @@ function startGame() {
             console.log(
                 `Wrong guess! Remaining attempts: ${
                     maxAttempts - wrongGuesses.length
+            
                 }`
             );
             userInput.innerHTML = `Wrong guess! Remaining attempts: ${
