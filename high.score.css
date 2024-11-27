@@ -1,0 +1,72 @@
+.high-score-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 90vh;
+    background-color: #df37c0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(178, 42, 142, 0.1),
+        0 1px 3px rgba(201, 132, 191, 0.06);
+    overflow: hidden;
+    z-index: 1000;
+    border: 2px solid #380f39;
+}
+
+.high-score-dialog h2 {
+    background-color: #ac4caf;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.high-score-dialog li {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-buttons {
+    padding-bottom: 10em;
+    background-color: #ac4caf;
+}
+
+.high-score-dialog .dialog-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background-color: #f9f9f9;
+}
+
+.high-score-dialog button {
+    padding: 0.8rem 1.5rem;
+    /* margin-bottom: 5rem; */
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.high-score-dialog button.close {
+    background-color: #f44336;
+    color: white;
+}
+
+.high-score-dialog button.close:hover {
+    background-color: #d32f2f;
+}
+
+.high-score-dialog button.play-again {
+    background-color: #4caf50;
+    color: white;
+}
+
+.high-score-dialog button.play-again:hover {
+    background-color: #388e3c;
+}

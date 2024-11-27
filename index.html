@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="title-section.css" />
         <link rel="stylesheet" href="difficulty-section.css" />
         <link rel="stylesheet" href="win-gameover.css" />
+        <link rel="stylesheet" href="high.score.css" />
         <script src="script-section12.js" type="module"></script>
         <script type="module" src="score.js"></script>
         <title>Hangman</title>
@@ -48,7 +49,7 @@
             </div>
         </section>
         <section class="game-section all-section, hidden">
-            <button id="high-score-button">HIGH-SCORE</button>
+            <button class="high-score-button">HIGH-SCORE</button>
             <div class="game-container">
                 <figure class="">
                     <svg
@@ -117,24 +118,28 @@
                 <button class="restart">Restart</button>
             </section>
         </section>
-        <section class="high-score all-section hidden">
-            <section class="highest-scores-section">
+        <section class="high-score high-score-dialog all-section hidden">
+            <div class="highest-scores-section">
                 <h2>Highest Scores</h2>
                 <ol class="highest-scores"></ol>
-            </section>
-        </section>    
-            <!-- "YOU WIN" SCENE -->
-            <section id="win-scene" class="win-gameover hidden">
-                <h2 class="big-title">GRATTIS!</h2>
-                <h3>ANTAL FÖRSÖK:</h3>
-                <h3 class="result-screen"></h3>
-                <p class="gameover"></p>
-                <div class="buttons">
-                    <button class="restart">STARTA OM</button>
-                    <button class="highscore button">HIGHSCORE</button>
+                <div class="dialog-buttons">
+                    <button class="close">Close</button>
+                    <button class="play-again">Play again</button>
                 </div>
-            </section>
+            </div>
         </section>
+        <!-- "YOU WIN" SCENE -->
+        <section id="win-scene" class="win-gameover hidden">
+            <h2 class="big-title">GRATTIS!</h2>
+            <h3>ANTAL FÖRSÖK:</h3>
+            <h3 class="result-screen"></h3>
+            <p class="gameover"></p>
+            <div class="buttons">
+                <button class="restart">STARTA OM</button>
+                <button class="high-score-button">HIGHSCORE</button>
+            </div>
+        </section>
+
         <!-- "GAME OVER" SCENE -->
         <section id="game-over-scene" class="win-gameover hidden">
             <h2 class="big-title">GAME OVER</h2>
