@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 90vh;
+    height: 100vh;
     background-color: #df37c0;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(178, 42, 142, 0.1),
@@ -17,7 +17,7 @@
 .high-score-dialog h2 {
     background-color: #ac4caf;
     color: #ffffff;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
@@ -26,9 +26,10 @@
 .high-score-dialog li {
     padding: 0.8rem 1rem;
     font-size: 1rem;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
+    color: #ffffff;
 }
 
 .dialog-buttons {
