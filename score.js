@@ -22,16 +22,32 @@ let easyButton = document.querySelector(".button-easy");
 let mediumButton = document.querySelector(".button-medium");
 let difficultButton = document.querySelector(".button-difficult");
 
+function showWelcomeWithLevel(level,playerName) {
+   
+    const welcomeSection = document.getElementById("welcome-section");
+    const welcomeMessageElement = document.getElementById("welcome-message");
+    welcomeSection.classList.remove("hidden");
+    // Update the welcome message text
+    welcomeMessageElement.innerHTML = `Välkommen, ${playerName}! Du valde nivå: ${level}.`;
+
+    // Style adjustments (optional)
+    welcomeMessageElement.style.fontSize = "1.5rem";
+    welcomeMessageElement.style.marginTop = "20px";
+
+}
 easyButton.addEventListener("click", () => {
     testWord = randomizeWord(10, 13);
+    showWelcomeWithLevel("Lätt",sendName());
     startGame();
 });
 mediumButton.addEventListener("click", () => {
     testWord = randomizeWord(13, 15);
+    showWelcomeWithLevel("Medel",sendName());
     startGame();
 });
 difficultButton.addEventListener("click", () => {
     testWord = randomizeWord(15, 17);
+    showWelcomeWithLevel("Svår",sendName());
     startGame();
 });
 
