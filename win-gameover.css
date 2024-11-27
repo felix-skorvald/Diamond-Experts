@@ -1,6 +1,9 @@
 * {
-    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 570;
+    font-style: normal;
 }
 
 /* WIN- AND GAME OVER -SCENES */
@@ -11,37 +14,59 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    background-color: #c95e9f;
 }
 
-.button {
+ .win-gameover button {
     border-radius: 10px;
     padding: 1rem;
     margin: 0.5rem;
-    transition: background-color 0.3s;
+    border: 5px solid #34043c;
+    background-color: #c95e9f;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    font-size: larger;
+    font-weight: 600;
 }
 
-.button:hover {
-    background-color: darkgray;
+.win-gameover button:hover {
+    transform: scale(1.1);
+    background-color: #ed70fd;
+    cursor: pointer;
+    box-shadow: 0 5px 0.7px -1px rgba(0, 0, 0, 0.3);
 }
 
-.big-title {
+.win-gameover .big-title {
     font-size: 110px;
+    border-bottom: 5px solid #34043c;
+    padding-bottom: 0;
 }
 
-.right-word-container {
+.win-gameover .right-word-container {
     text-align: center;
     font-size: x-large;
 }
 
-#word-of-game {
+.win-gameover #word-of-game {
     font-size: 70px;
 }
 
-.buttons {
+.win-gameover .buttons {
     display: flex;
     flex-direction: column;
 }
 
+.win-gameover .user-name {
+    font-size: 90px;
+}
 .hidden{
 	display: none;
+}
+
+@media (max-width:500px){
+    
+.win-gameover .big-title {
+    font-size: 75px;
+    text-align: center;
+}
+
 }
