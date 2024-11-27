@@ -257,3 +257,36 @@ highScoresBtn.addEventListener('click', () => {
         highestScores.appendChild(li);
     }
 });
+
+
+highScoresBtn.addEventListener('click', () => {
+    console.log(
+        saveScores({
+            word: testWord,
+            user: userName,
+            score: score,
+            date: new Date().toString(),
+        })
+    );
+    const scores = highScores();
+    hideAllSections();
+
+    const highScoreSection = document.querySelector('.high-score');
+    highScoreSection.classList.remove('hidden');
+
+    highestScores.innerHTML = '';
+
+    if (scores.length > 0) {
+        scores.forEach((score) => {
+            const li = document.createElement('li');
+            li.textContent = `${score.user}: ${score.score} - ${new Date(
+                score.date
+            ).toLocaleDateString()}`;
+            highestScores.appendChild(li);
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = 'No high scores yet!';
+        highestScores.appendChild(li);
+    }
+});
