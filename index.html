@@ -3,29 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=M+PLUS+Rounded+1c&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="game-section.css" />
         <link rel="stylesheet" href="title-section.css" />
         <link rel="stylesheet" href="difficulty-section.css" />
         <link rel="stylesheet" href="win-gameover.css" />
+        <link rel="stylesheet" href="high-score.css" />
         <script src="script-section12.js" type="module"></script>
         <script type="module" src="score.js"></script>
         <title>Hangman</title>
     </head>
-
     <body>
         <!-- Första section:skriva namn -->
-        <section class="container all-section">
+        <section class="title container all-section">
             <div class="img-title">
                 <img
                     src="img/234c5ac3-34fc-4e0b-a46c-2f700f12fcc2.png"
                     alt="Title-Hänga Gubbe"
                     class="img-1"
                 />
-                <img src="img/Hangman.png" alt="Hänga Gubbe" class="img-2" />
             </div>
 
             <div class="name">
-                <h1 class="welcome-title">Välkommen till Hänga Gubben!</h1>
                 <h2 class="name-h1">Ditt Namn :</h2>
                 <input type="text" placeholder="Namn:" class="input-name" />
                 <div class="error-message"></div>
@@ -36,7 +38,13 @@
         </section>
         <section class="section-2 hidden all-section">
             <div class="section2-title">
-                <h1>HÄNGA GUBBE</h1>
+                <div>
+                    <h1 class="häng-title">HÄNGA GUBBE</h1>
+                    <h2 class="ready-title">
+                        Redo för en utmaning? Välj svårighetsgrad !
+                    </h2>
+                </div>
+                <img src="img/Hangman.png" alt="Hänga Gubbe" class="img-2" />
             </div>
             <div class="level">
                 <button class="button-easy">LÄTT</button>
@@ -48,7 +56,7 @@
             </div>
         </section>
         <section class="game-section all-section, hidden">
-            <button id="high-score-button">HIGH-SCORE</button>
+            <button class="high-score-button">HIGH-SCORE</button>
             <div class="game-container">
                 <figure class="">
                     <svg
@@ -103,6 +111,9 @@
                 </figure>
             </div>
             <section>
+                <div id="welcome-section" class="hidden">
+                    <p id="welcome-message">welcome</p>
+                </div>
                 <h1>Hangman Game</h1>
                 <p class="mystery-word"></p>
             </section>
@@ -117,24 +128,29 @@
                 <button class="restart">Restart</button>
             </section>
         </section>
-        <section class="high-score all-section hidden">
-            <section class="highest-scores-section">
-                <h2>Highest Scores</h2>
+        <!-- High Score Dialog -->
+        <section class="high-score high-score-dialog all-section hidden">
+            <div class="highest-scores-section">
+                <h2>Högsta Poäng</h2>
                 <ol class="highest-scores"></ol>
-            </section>
-        </section>    
-            <!-- "YOU WIN" SCENE -->
-            <section id="win-scene" class="win-gameover hidden">
-                <h2 class="big-title">GRATTIS!</h2>
-                <h3>ANTAL FÖRSÖK:</h3>
-                <h3 class="result-screen"></h3>
-                <p class="gameover"></p>
-                <div class="buttons">
-                    <button class="restart">STARTA OM</button>
-                    <button class="high-score-button">HIGHSCORE</button>
+                <div class="dialog-buttons">
+                    <button class="close">Stänga</button>
+                    <button class="play-again">Spela</button>
                 </div>
-            </section>
+            </div>
         </section>
+        <!-- "YOU WIN" SCENE -->
+        <section id="win-scene" class="win-gameover hidden">
+            <h2 class="big-title">GRATTIS!</h2>
+            <h3>ANTAL FÖRSÖK:</h3>
+            <h3 class="result-screen"></h3>
+            <p class="gameover"></p>
+            <div class="buttons">
+                <button class="restart">STARTA OM</button>
+                <button class="highscore button">HIGHSCORE</button>
+            </div>
+        </section>
+
         <!-- "GAME OVER" SCENE -->
         <section id="game-over-scene" class="win-gameover hidden">
             <h2 class="big-title">GAME OVER</h2>
@@ -146,7 +162,7 @@
             </div>
             <div class="buttons">
                 <button class="restart">STARTA OM</button>
-                <button class="high-score-button">HIGHSCORE</button>
+                <button class="highscore button">HIGHSCORE</button>
             </div>
         </section>
     </body>

@@ -1,9 +1,9 @@
 * {
-    margin: 0;
+    margin:0;
     padding: 0;
     box-sizing: border-box;
     font-family: "M PLUS Rounded 1c", sans-serif;
-    font-weight: 400;
+    font-weight: 570;
     font-style: normal;
 }
 
@@ -59,9 +59,9 @@
 .win-gameover .user-name {
     font-size: 90px;
 }
-/* .hidden{
+.hidden{
 	display: none;
-} */
+}
 
 @media (max-width:500px){
     

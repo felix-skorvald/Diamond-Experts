@@ -13,41 +13,42 @@ let wordInGame = "";
 inputName.focus();
 
 export function sendName(){
-
-    return inputName.value
+	
+	return inputName.value
 }
 
 function hideAllSections() {
-    allSections.forEach((section) => {
-        if (!section.classList.contains("hidden")) {
-            section.classList.add("hidden");
-        } 
-    });
+	allSections.forEach((section) => {
+		if (!section.classList.contains("hidden")) {
+			section.classList.add("hidden");
+		} 
+	});
 }
 
 buttonStart.addEventListener("click", () => {
-    if (inputName.value.trim() === "") {
-        errorMessage.innerText = "Vi behöver att veta ditt namn!";
-        return;
-    }
-    allSections.forEach((section, index) => {
-        if (index === 1) {
-            section.classList.remove("hidden");
-        } else {
-            section.classList.add("hidden");
-        }
-    });
+	if (inputName.value.trim() === "") {
+		errorMessage.innerText = "Vi behöver att veta ditt namn!";
+		errorMessage.style.fontSize="18px";
+		return;
+	}
+	allSections.forEach((section, index) => {
+		if (index === 1) {
+			section.classList.remove("hidden");
+		} else {
+			section.classList.add("hidden");
+		}
+	});
 });
 let buttonBack = document.querySelector(".button-back");
 buttonBack.addEventListener("click", () => {
-    allSections.forEach((section, index) => {
-        if (index === 0) {
-            section.classList.remove("hidden");
-        } else {
-            section.classList.add("hidden");
-        }
-    });
-    errorMessage.style.display = "none";
+	allSections.forEach((section, index) => {
+		if (index === 0) {
+			section.classList.remove("hidden");
+		} else {
+			section.classList.add("hidden");
+		}
+	});
+	errorMessage.style.display = "none";
 });
 
 // let easyButton = document.querySelector(".button-easy");
