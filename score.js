@@ -245,9 +245,9 @@ highScoresBtn.forEach((button) => {
             })
         );
         const scores = highScores();
-        hideAllSections();
-        const gameSection = document.querySelector(".game-section");
-        gameSection.classList.remove("hidden");
+        // hideAllSections();
+        // const gameSection = document.querySelector(".game-section");
+        // gameSection.classList.remove("hidden");
 
         const highScoreSection = document.querySelector(".high-score");
         highScoreSection.classList.remove("hidden");
@@ -283,8 +283,8 @@ playAgainBtn.forEach((button) => {
 closeBtn.addEventListener("click", () => {
     const highScoreSection = document.querySelector(".high-score");
     highScoreSection.classList.add("hidden");
-    const gameSection = document.querySelector(".game-section");
-    gameSection.classList.remove("hidden");
+    // const gameSection = document.querySelector(".game-section");
+    // gameSection.classList.remove("hidden");
 });
 
 function win() {
