@@ -56,8 +56,8 @@
             </div>
         </section>
         <section class="game-section all-section hidden">
-            <button class="high-score-button">HIGH-SCORE</button>
-            <div class="game-container">
+            <div class="frame">
+            <div class="hangman-draw">
                 <figure class="">
                     <svg
                         width="501"
@@ -110,23 +110,27 @@
                     </svg>
                 </figure>
             </div>
-            <section>
-                <div id="welcome-section" class="hidden">
+            <div class="text-container">
+                <div id="welcome-section" >
                     <p id="welcome-message">welcome</p>
                 </div>
-                <h1>Hangman Game</h1>
                 <p class="mystery-word"></p>
-            </section>
-            <section class="keyboard-container">
-                <div class="keyboard">
-                    <p class="user-input"></p>
+                <div class="wrong-container">
+                    <p>Fel bokstäver:</p>
+                    <p class="wrong-letters"></p>
                 </div>
-            </section>
-            <section class="result">
-                <h3 class="result-screen"></h3>
-                <p class="gameover"></p>
-                <button class="restart">Restart</button>
-            </section>
+                <section class="keyboard-container">
+                    <div class="keyboard">
+                        <p class="user-input"></p>
+                    </div>
+                </section>
+                <section class="result">
+                    <h3 class="result-screen"></h3>
+                    <p class="gameover"></p>
+                    <button class="play-again">Starta om</button>
+                    <button class="high-score-button">HIGH-SCORE</button>
+                </section>
+            </div>
         </section>
         <!-- High Score Dialog -->
         <section class="high-score high-score-dialog all-section hidden">
@@ -134,15 +138,15 @@
                 <h2>Högsta Poäng</h2>
                 <ol class="highest-scores"></ol>
                 <div class="dialog-buttons">
-                    <button class="close">Stänga</button>
-                    <button class="play-again">Spela</button>
+                    <button class="close">Stäng</button>
+                    <button class="play-again">Starta om</button>
                 </div>
             </div>
         </section>
         <!-- "YOU WIN" SCENE -->
         <section id="win-scene" class="win-gameover hidden">
-            <h2 class="big-title">GRATTIS!</h2>
-            <h3>ANTAL FÖRSÖK:</h3>
+            <h2 class="big-title">GRATTIS Usr!😊</h2>
+            <h3>DINA POÄNG:</h3>
             <h3 class="result-screen"></h3>
             <p class="gameover"></p>
             <div class="buttons">
