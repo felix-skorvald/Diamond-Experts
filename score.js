@@ -237,6 +237,8 @@ highScoresBtn.addEventListener('click', () => {
     );
     const scores = highScores();
     hideAllSections();
+    const gameSection = document.querySelector('.game-section');
+    gameSection.classList.remove('hidden');
 
     const highScoreSection = document.querySelector('.high-score');
     highScoreSection.classList.remove('hidden');
