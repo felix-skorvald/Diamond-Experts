@@ -9,10 +9,15 @@ const highestScores = document.querySelector(".highest-scores");
 const restartBtn = document.querySelector(".restart");
 let allSections = document.querySelectorAll(".all-section");
 const gameSection = document.querySelector(".game-section");
-const highScoresBtn = document.querySelector(".high-score-button");
+const highScoresBtn = document.querySelectorAll(".high-score-button");
 const playAgainBtn = document.querySelectorAll(".play-again");
 const closeBtn = document.querySelector(".close");
 const wrongLetterContainer = document.querySelector(".wrong-letters");
+const gameOverSection = document.querySelector("#game-over-scene");
+const winSection = document.querySelector("#win-scene");
+const greetUserWin = document.querySelector("#greet-user-win");
+const greetUserGameOVer = document.querySelector("#greet-user-go");
+const wordOfGame = document.querySelector("#word-of-game");
 
 let testWord = "";
 let guessedLetters = [];
@@ -64,6 +69,7 @@ function hideAllSections() {
 function startGame() {
     userName = sendName();
     console.log(userName);
+    console.log(testWord);
     let gameBoard = Array(testWord.length).fill("_");
     hideAllSections();
     gameSection.classList.remove("hidden");
@@ -140,6 +146,7 @@ function startGame() {
         if (!gameBoard.includes("_")) {
             resultScreen.innerHTML = "You win!";
             score++;
+            win();
             gameOver = true;
             saveScores({
                 word: testWord,
@@ -153,6 +160,7 @@ function startGame() {
         } else if (wrongGuesses.length >= maxAttempts) {
             resultScreen.innerHTML = `Game Over! The word was "${word}".`;
             gameOver = true;
+            gameIsOver();
             saveScores({
                 word: testWord,
                 user: userName,
@@ -226,39 +234,40 @@ function saveScores(newScore) {
 }
 
 // This is the button to show highest 5 scores if clicked.
+highScoresBtn.forEach((button) => {
+    button.addEventListener("click", () => {
+        console.log(
+            saveScores({
+                word: testWord,
+                user: userName,
+                score: score,
+                date: new Date().toString(),
+            })
+        );
+        const scores = highScores();
+        hideAllSections();
+        const gameSection = document.querySelector(".game-section");
+        gameSection.classList.remove("hidden");
 
-highScoresBtn.addEventListener("click", () => {
-    console.log(
-        saveScores({
-            word: testWord,
-            user: userName,
-            score: score,
-            date: new Date().toString(),
-        })
-    );
-    const scores = highScores();
-    hideAllSections();
-    const gameSection = document.querySelector(".game-section");
-    gameSection.classList.remove("hidden");
+        const highScoreSection = document.querySelector(".high-score");
+        highScoreSection.classList.remove("hidden");
 
-    const highScoreSection = document.querySelector(".high-score");
-    highScoreSection.classList.remove("hidden");
+        highestScores.innerHTML = "";
 
-    highestScores.innerHTML = "";
-
-    if (scores.length > 0) {
-        scores.forEach((score) => {
+        if (scores.length > 0) {
+            scores.forEach((score) => {
+                const li = document.createElement("li");
+                li.textContent = `Namn:  ${score.user} -  Poäng: ${
+                    score.score
+                } -  Datum: ${new Date(score.date).toLocaleDateString()}`;
+                highestScores.appendChild(li);
+            });
+        } else {
             const li = document.createElement("li");
-            li.textContent = `Namn:  ${score.user} -  Poäng: ${
-                score.score
-            } -  Datum: ${new Date(score.date).toLocaleDateString()}`;
+            li.textContent = "No high scores yet!";
             highestScores.appendChild(li);
-        });
-    } else {
-        const li = document.createElement("li");
-        li.textContent = "No high scores yet!";
-        highestScores.appendChild(li);
-    }
+        }
+    });
 });
 
 // play again button on high scores section
@@ -277,3 +286,16 @@ closeBtn.addEventListener("click", () => {
     const gameSection = document.querySelector(".game-section");
     gameSection.classList.remove("hidden");
 });
+
+function win() {
+    hideAllSections();
+    winSection.classList.remove("hidden");
+    greetUserWin.innerText = `GRATTIS ${userName}!😊`;
+}
+
+function gameIsOver() {
+    hideAllSections();
+    gameOverSection.classList.remove("hidden");
+    wordOfGame.innerText = testWord;
+    greetUserGameOVer.innerText = userName;
+}
