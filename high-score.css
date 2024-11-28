@@ -4,7 +4,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 100vh;
     background-color: #df37c0;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(178, 42, 142, 0.1),
@@ -41,7 +40,7 @@
     display: flex;
     justify-content: space-around;
     padding: 1rem;
-    background-color: #f9f9f9;
+    background-color: #ac4caf;
 }
 
 .high-score-dialog button {

@@ -10,6 +10,8 @@ const restartBtn = document.querySelector('.restart');
 let allSections = document.querySelectorAll('.all-section');
 const gameSection = document.querySelector('.game-section');
 const highScoresBtn = document.querySelector('.high-score-button');
+const playAgainBtn = document.querySelector('.play-again');
+const closeBtn = document.querySelector('.close');
 
 let testWord = '';
 let guessedLetters = [];
@@ -19,36 +21,34 @@ let score = 0;
 let gameOver = false;
 let userName = 'Player 1';
 const KEY = 'scores';
-let easyButton = document.querySelector(".button-easy");
-let mediumButton = document.querySelector(".button-medium");
-let difficultButton = document.querySelector(".button-difficult");
+let easyButton = document.querySelector('.button-easy');
+let mediumButton = document.querySelector('.button-medium');
+let difficultButton = document.querySelector('.button-difficult');
 
-function showWelcomeWithLevel(level,playerName) {
-   
-    const welcomeSection = document.getElementById("welcome-section");
-    const welcomeMessageElement = document.getElementById("welcome-message");
-    welcomeSection.classList.remove("hidden");
+function showWelcomeWithLevel(level, playerName) {
+    const welcomeSection = document.getElementById('welcome-section');
+    const welcomeMessageElement = document.getElementById('welcome-message');
+    welcomeSection.classList.remove('hidden');
     // Update the welcome message text
     welcomeMessageElement.innerHTML = `Välkommen, ${playerName}! Du valde nivå: ${level}.`;
 
     // Style adjustments (optional)
-    welcomeMessageElement.style.fontSize = "1.5rem";
-    welcomeMessageElement.style.marginTop = "20px";
-
+    welcomeMessageElement.style.fontSize = '1.5rem';
+    welcomeMessageElement.style.marginTop = '20px';
 }
-easyButton.addEventListener("click", () => {
+easyButton.addEventListener('click', () => {
     testWord = randomizeWord(10, 13);
-    showWelcomeWithLevel("Lätt",sendName());
+    showWelcomeWithLevel('Lätt', sendName());
     startGame();
 });
 mediumButton.addEventListener('click', () => {
     testWord = randomizeWord(13, 15);
-    showWelcomeWithLevel("Medel",sendName());
+    showWelcomeWithLevel('Medel', sendName());
     startGame();
 });
 difficultButton.addEventListener('click', () => {
     testWord = randomizeWord(15, 17);
-    showWelcomeWithLevel("Svår",sendName());
+    showWelcomeWithLevel('Svår', sendName());
     startGame();
 });
 
@@ -246,9 +246,9 @@ highScoresBtn.addEventListener('click', () => {
     if (scores.length > 0) {
         scores.forEach((score) => {
             const li = document.createElement('li');
-            li.textContent = `${score.user}: ${score.score} - ${new Date(
-                score.date
-            ).toLocaleDateString()}`;
+            li.textContent = `Namn:  ${score.user} -  Poäng: ${
+                score.score
+            } -  Datum: ${new Date(score.date).toLocaleDateString()}`;
             highestScores.appendChild(li);
         });
     } else {
@@ -258,35 +258,17 @@ highScoresBtn.addEventListener('click', () => {
     }
 });
 
-
-highScoresBtn.addEventListener('click', () => {
-    console.log(
-        saveScores({
-            word: testWord,
-            user: userName,
-            score: score,
-            date: new Date().toString(),
-        })
-    );
-    const scores = highScores();
+// play again button on high scores section
+// when clicked this button takes user to levels section
+playAgainBtn.addEventListener('click', () => {
     hideAllSections();
-
+    const levelSection = document.querySelector('.section-2');
+    levelSection.classList.remove('hidden');
+});
+// Close button on high scores section
+closeBtn.addEventListener('click', () => {
     const highScoreSection = document.querySelector('.high-score');
-    highScoreSection.classList.remove('hidden');
-
-    highestScores.innerHTML = '';
-
-    if (scores.length > 0) {
-        scores.forEach((score) => {
-            const li = document.createElement('li');
-            li.textContent = `${score.user}: ${score.score} - ${new Date(
-                score.date
-            ).toLocaleDateString()}`;
-            highestScores.appendChild(li);
-        });
-    } else {
-        const li = document.createElement('li');
-        li.textContent = 'No high scores yet!';
-        highestScores.appendChild(li);
-    }
+    highScoreSection.classList.add('hidden');
+    const gameSection = document.querySelector('.game-section');
+    gameSection.classList.remove('hidden');
 });
