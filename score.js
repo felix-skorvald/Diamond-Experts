@@ -74,7 +74,8 @@ function resetGame() {
     score = 0;
     gameBoard = Array(testWord.length).fill('_');
     gameOver = false;
-    displayInitialBoard();
+
+    displaySection.innerHTML = '';
     userInput.innerHTML = '';
     resultScreen.innerHTML = '';
     wrongLetterContainer.innerHTML = '';
@@ -171,7 +172,6 @@ function startGame() {
             resultScreen.innerHTML = 'You win!';
             win();
             gameOver = true;
-
             console.log('High Scores:', highScores());
             // We can add do you want to play again and play again button here
         } else if (wrongGuesses.length >= maxAttempts) {
@@ -198,11 +198,8 @@ function startGame() {
 
     console.log('LocalStorage after save:', localStorage.getItem(KEY));
 
-    resetGame();
-
-    restartBtn.addEventListener('click', () => {
-        resetGame();
-    });
+    restartBtn.addEventListener('click', resetGame());
+    playAgainBtn.addEventListener('click', resetGame());
 }
 
 function highScores() {
@@ -277,6 +274,18 @@ playAgainBtn.forEach((button) => {
         hideAllSections();
         const levelSection = document.querySelector('.section-2');
         levelSection.classList.remove('hidden');
+        displaySection.innerHTML = '';
+        userInput.innerHTML = '';
+        resultScreen.innerHTML = '';
+        wrongLetterContainer.innerHTML = '';
+        userName = '';
+        guessedLetters = [];
+        wrongGuesses = [];
+        maxAttempts = 5;
+        score = 0;
+        gameBoard = Array(testWord.length).fill('_');
+        gameOver = false;
+        startGame();
     });
 });
 // Close button on high scores section
