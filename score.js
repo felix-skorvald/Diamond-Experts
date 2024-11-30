@@ -31,6 +31,8 @@ let easyButton = document.querySelector('.button-easy');
 let mediumButton = document.querySelector('.button-medium');
 let difficultButton = document.querySelector('.button-difficult');
 
+let selectedLevel = 'Easy';
+
 function showWelcomeWithLevel(level, playerName) {
     const welcomeSection = document.getElementById('welcome-section');
     const welcomeMessageElement = document.getElementById('welcome-message');
@@ -42,19 +44,44 @@ function showWelcomeWithLevel(level, playerName) {
     welcomeMessageElement.style.fontSize = '1.5rem';
     welcomeMessageElement.style.marginTop = '20px';
 }
+// function selectLevel() {
+//     easyButton.addEventListener('click', () => {
+//         testWord = randomizeWord(10, 13);
+//         showWelcomeWithLevel('Lätt', sendName());
+//         startGame();
+//     });
+//     mediumButton.addEventListener('click', () => {
+//         testWord = randomizeWord(13, 15);
+//         showWelcomeWithLevel('Medel', sendName());
+//         startGame();
+//     });
+//     difficultButton.addEventListener('click', () => {
+//         testWord = randomizeWord(15, 17);
+//         showWelcomeWithLevel('Svår', sendName());
+//         startGame();
+//     });
+// }
+
+// selectLevel();
+
 easyButton.addEventListener('click', () => {
+    selectedLevel = 'Easy';
     testWord = randomizeWord(10, 13);
-    showWelcomeWithLevel('Lätt', sendName());
+    showWelcomeWithLevel(selectedLevel, sendName());
     startGame();
 });
+
 mediumButton.addEventListener('click', () => {
+    selectedLevel = 'Medium';
     testWord = randomizeWord(13, 15);
-    showWelcomeWithLevel('Medel', sendName());
+    showWelcomeWithLevel(selectedLevel, sendName());
     startGame();
 });
+
 difficultButton.addEventListener('click', () => {
+    selectedLevel = 'Hard';
     testWord = randomizeWord(15, 17);
-    showWelcomeWithLevel('Svår', sendName());
+    showWelcomeWithLevel(selectedLevel, sendName());
     startGame();
 });
 
@@ -66,24 +93,55 @@ function hideAllSections() {
     });
 }
 
+// function resetGame() {
+//     userName = '';
+//     testWord = '';
+//     guessedLetters = [];
+//     wrongGuesses = [];
+//     maxAttempts = 5;
+//     score = 0;
+//     gameOver = false;
+
+//     displaySection.innerHTML = '';
+//     userInput.innerHTML = '';
+//     resultScreen.innerHTML = '';
+//     wrongLetterContainer.innerHTML = '';
+//     selectLevel();
+//     winSection.classList.add('hidden');
+//     gameOverSection.classList.add('hidden');
+//     if (easyButton) testWord = randomizeWord(10, 13);
+//     if (mediumButton) testWord = randomizeWord(13, 15);
+//     if (difficultButton) testWord = randomizeWord(15, 17);
+//     gameBoard = Array(testWord.length).fill('_');
+//     console.log('Game reset');
+// }
+
 function resetGame() {
-    userName = '';
     guessedLetters = [];
     wrongGuesses = [];
     maxAttempts = 5;
     score = 0;
-    gameBoard = Array(testWord.length).fill('_');
     gameOver = false;
+    // testWord = '';
 
-    displaySection.innerHTML = '';
+    if (selectedLevel === 'Easy') testWord = randomizeWord(10, 13);
+    if (selectedLevel === 'Medium') testWord = randomizeWord(13, 15);
+    if (selectedLevel === 'Hard') testWord = randomizeWord(15, 17);
+
+    let gameBoard = Array(testWord.length).fill('_');
+    displaySection.innerHTML = gameBoard.join(' ');
+
     userInput.innerHTML = '';
     resultScreen.innerHTML = '';
     wrongLetterContainer.innerHTML = '';
-    console.log('Game reset');
+    startGame();
+
+    console.log('Game reset. Level:', selectedLevel, 'New word:', testWord);
 }
 
 function startGame() {
     userName = sendName();
+
     console.log(userName);
     console.log(testWord);
     let gameBoard = Array(testWord.length).fill('_');
@@ -198,8 +256,15 @@ function startGame() {
 
     console.log('LocalStorage after save:', localStorage.getItem(KEY));
 
-    restartBtn.addEventListener('click', resetGame());
-    playAgainBtn.addEventListener('click', resetGame());
+    restartBtn.addEventListener('click', () => {
+        resetGame();
+        startGame();
+    });
+
+    playAgainBtn.addEventListener('click', () => {
+        resetGame();
+        startGame();
+    });
 }
 
 function highScores() {
@@ -271,20 +336,23 @@ highScoresBtn.forEach((button) => {
 // when clicked this button takes user to levels section
 playAgainBtn.forEach((button) => {
     button.addEventListener('click', () => {
-        hideAllSections();
-        const levelSection = document.querySelector('.section-2');
-        levelSection.classList.remove('hidden');
-        displaySection.innerHTML = '';
-        userInput.innerHTML = '';
-        resultScreen.innerHTML = '';
-        wrongLetterContainer.innerHTML = '';
-        userName = '';
-        guessedLetters = [];
-        wrongGuesses = [];
-        maxAttempts = 5;
-        score = 0;
-        gameBoard = Array(testWord.length).fill('_');
-        gameOver = false;
+        // hideAllSections();
+        // const levelSection = document.querySelector('.section-2');
+        // levelSection.classList.remove('hidden');
+        // displaySection.innerHTML = '';
+        // userInput.innerHTML = '';
+        // resultScreen.innerHTML = '';
+        // wrongLetterContainer.innerHTML = '';
+        // userName = '';
+        // testWord = '';
+        // guessedLetters = [];
+        // wrongGuesses = [];
+        // maxAttempts = 5;
+        // score = 0;
+        // selectLevel();
+
+        // gameOver = false;
+        resetGame();
         startGame();
     });
 });
@@ -308,3 +376,15 @@ function gameIsOver() {
     wordOfGame.innerText = testWord;
     greetUserGameOVer.innerText = userName;
 }
+
+restartBtn.addEventListener('click', () => {
+    resetGame();
+    startGame();
+});
+
+playAgainBtn.forEach((button) => {
+    button.addEventListener('click', () => {
+        resetGame();
+        startGame();
+    });
+});
