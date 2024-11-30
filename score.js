@@ -67,21 +67,21 @@ function showWelcomeWithLevel(level, playerName) {
 easyButton.addEventListener('click', () => {
     selectedLevel = 'Easy';
     testWord = randomizeWord(10, 13);
-    showWelcomeWithLevel(selectedLevel, sendName());
+    showWelcomeWithLevel('Lätt', sendName());
     startGame();
 });
 
 mediumButton.addEventListener('click', () => {
     selectedLevel = 'Medium';
     testWord = randomizeWord(13, 15);
-    showWelcomeWithLevel(selectedLevel, sendName());
+    showWelcomeWithLevel('Medel', sendName());
     startGame();
 });
 
 difficultButton.addEventListener('click', () => {
     selectedLevel = 'Hard';
     testWord = randomizeWord(15, 17);
-    showWelcomeWithLevel(selectedLevel, sendName());
+    showWelcomeWithLevel('Svår', sendName());
     startGame();
 });
 
@@ -134,8 +134,8 @@ function resetGame() {
     userInput.innerHTML = '';
     resultScreen.innerHTML = '';
     wrongLetterContainer.innerHTML = '';
-    startGame();
-
+    
+    restartHangMan()
     console.log('Game reset. Level:', selectedLevel, 'New word:', testWord);
 }
 
