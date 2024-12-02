@@ -16,6 +16,7 @@ const wrongLetterContainer = document.querySelector(".wrong-letters");
 const gameOverSection = document.querySelector("#game-over-scene");
 const winSection = document.querySelector("#win-scene");
 const greetUserWin = document.querySelector("#greet-user-win");
+const winPoints = document.querySelector(".winPoints");
 const greetUserGameOVer = document.querySelector("#greet-user-go");
 const wordOfGame = document.querySelector("#word-of-game");
 
@@ -135,6 +136,7 @@ function startGame() {
                 `Correct guess! Current board: ${gameBoard.join("   ")}`
             );
             userInput.innerHTML = "Rätt bokstav!";
+            score++;
         } else {
             drawHangMan(wrongGuesses.length);
             wrongGuesses.push(pressedLetter);
@@ -155,7 +157,6 @@ function startGame() {
         //Here is the code for deciding winning or losing condition.
         if (!gameBoard.includes("_")) {
             resultScreen.innerHTML = "You win!";
-            score++;
             win();
             gameOver = true;
             saveScores({
@@ -302,6 +303,8 @@ function win() {
     hideAllSections();
     winSection.classList.remove("hidden");
     greetUserWin.innerText = `GRATTIS ${userName}!😊`;
+    winPoints.innerText = score;
+
 }
 
 function gameIsOver() {
