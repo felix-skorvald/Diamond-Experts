@@ -75,8 +75,6 @@ function startGame() {
     gameBoard = Array(testWord.length).fill("_");
     console.log(userName);
     console.log(testWord);
-// ta bort keyeventlyssnarn
-
 
     hideAllSections();
     gameSection.classList.remove("hidden");
@@ -85,7 +83,9 @@ function startGame() {
         displaySection.innerHTML = gameBoard.join(" ");
     }
     displayInitialBoard();
+    userInput.innerHTML = "Använd tangentbordet för att gissa"
 
+    //To look if the listener already is added!
     if (!keydownListenerAdded) {
         document.addEventListener("keydown", (event) => {
             // If conditional down below is the game is over check code,
