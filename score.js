@@ -27,6 +27,7 @@ let score = 0;
 let gameOver = false;
 let userName = "Player 1";
 let gameBoard = [];
+let keydownListenerAdded = false;
 const KEY = "scores";
 let easyButton = document.querySelector(".button-easy");
 let mediumButton = document.querySelector(".button-medium");
@@ -73,6 +74,9 @@ function startGame() {
     gameBoard = Array(testWord.length).fill("_");
     console.log(userName);
     console.log(testWord);
+// ta bort keyeventlyssnarn
+
+
     hideAllSections();
     gameSection.classList.remove("hidden");
     restartHangMan();
@@ -81,29 +85,33 @@ function startGame() {
     }
     displayInitialBoard();
 
-    document.addEventListener("keydown", (event) => {
-        // If conditional down below is the game is over check code,
-        // if the gameOver is true then ignore further input but keep the event listener
-        if (gameOver) {
-            userInput.innerHTML = "Game is over. Press restart to play again.";
-            console.log("Game is over. No more input allowed.");
-            return;
-        }
+    if (!keydownListenerAdded) {
+        document.addEventListener("keydown", (event) => {
+            // If conditional down below is the game is over check code,
+            // if the gameOver is true then ignore further input but keep the event listener
+            if (gameOver) {
+                userInput.innerHTML = "Game is over. Press restart to play again.";
+                console.log("Game is over. No more input allowed.");
+                return;
+            }
 
-        const pressedLetter = event.key.toLowerCase();
-        const alphabet = /^[a-zåäö]$/;
+            const pressedLetter = event.key.toLowerCase();
+            const alphabet = /^[a-zåäö]$/;
 
-        if (alphabet.test(pressedLetter)) {
-            console.log(`The ${pressedLetter} key was pressed.`);
-            userInput.innerHTML = `The ${pressedLetter} key was pressed.`;
-            handleGuess(pressedLetter, testWord);
-        } else {
-            console.log("Invalid input. Please press a valid letter.");
-            userInput.innerHTML = `Invalid input. Please press a valid letter.`;
-        }
-        console.log("Raw key input:", event.key);
-        console.log(guessedLetters);
-    });
+            if (alphabet.test(pressedLetter)) {
+                console.log(`The ${pressedLetter} key was pressed.`);
+                userInput.innerHTML = `The ${pressedLetter} key was pressed.`;
+                handleGuess(pressedLetter, testWord);
+            } else {
+                console.log("Invalid input. Please press a valid letter.");
+                userInput.innerHTML = `Invalid input. Please press a valid letter.`;
+            }
+            console.log("Raw key input:", event.key);
+            console.log(guessedLetters);
+        });
+
+        keydownListenerAdded = true;  
+    }
 
     const handleGuess = (pressedLetter, word) => {
         pressedLetter = pressedLetter.toLowerCase();
@@ -225,7 +233,6 @@ function resetGame(section) {
     gameBoard=[]
     userName = "";
     testWord = "";
-    console.log("HEJEJEJEJ")
     userInput.innerHTML = "";
     resultScreen.innerHTML = "";
     wrongLetterContainer.innerHTML = "";
