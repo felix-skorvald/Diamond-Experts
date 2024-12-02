@@ -26,6 +26,7 @@ let maxAttempts = 5;
 let score = 0;
 let gameOver = false;
 let userName = "Player 1";
+let gameBoard = [];
 const KEY = "scores";
 let easyButton = document.querySelector(".button-easy");
 let mediumButton = document.querySelector(".button-medium");
@@ -42,6 +43,7 @@ function showWelcomeWithLevel(level, playerName) {
     welcomeMessageElement.style.fontSize = "1.5rem";
     welcomeMessageElement.style.marginTop = "20px";
 }
+
 easyButton.addEventListener("click", () => {
     testWord = randomizeWord(10, 13);
     showWelcomeWithLevel("Lätt", sendName());
@@ -68,9 +70,9 @@ function hideAllSections() {
 
 function startGame() {
     userName = sendName();
+    gameBoard = Array(testWord.length).fill("_");
     console.log(userName);
     console.log(testWord);
-    let gameBoard = Array(testWord.length).fill("_");
     hideAllSections();
     gameSection.classList.remove("hidden");
     restartHangMan();
@@ -174,8 +176,6 @@ function startGame() {
         displayInitialBoard();
     };
 
-    handleGuess();
-
     // saving scores to the local storage starts here
 
     saveScores({
@@ -186,23 +186,7 @@ function startGame() {
     });
 
     console.log("LocalStorage after save:", localStorage.getItem(KEY));
-
-    function resetGame() {
-        userName = "";
-        guessedLetters = [];
-        wrongGuesses = [];
-        maxAttempts = 5;
-        gameBoard = Array(testWord.length).fill("_");
-        gameOver = false;
-        displayInitialBoard();
-        userInput.innerHTML = "";
-        resultScreen.innerHTML = "";
-        console.log("Game reset");
-    }
-
-    restartBtn.addEventListener("click", () => {
-        resetGame();
-    });
+    
 }
 
 function highScores() {
@@ -232,6 +216,32 @@ function saveScores(newScore) {
     // });
     return getScores;
 }
+
+function resetGame(section) {
+    guessedLetters = [];
+    wrongGuesses = [];
+    maxAttempts = 5;
+    gameOver = false;
+    gameBoard=[]
+    userName = "";
+    testWord = "";
+    console.log("HEJEJEJEJ")
+    userInput.innerHTML = "";
+    resultScreen.innerHTML = "";
+    wrongLetterContainer.innerHTML = "";
+    displaySection.innerHTML = "";
+
+
+    hideAllSections();
+
+    allSections[section].classList.remove("hidden");
+}
+
+playAgainBtn.forEach((button) => {
+    button.addEventListener("click", () => {
+        resetGame(1)
+    });
+});
 
 // This is the button to show highest 5 scores if clicked.
 highScoresBtn.forEach((button) => {
@@ -272,13 +282,7 @@ highScoresBtn.forEach((button) => {
 
 // play again button on high scores section
 // when clicked this button takes user to levels section
-playAgainBtn.forEach((button) => {
-    button.addEventListener("click", () => {
-        hideAllSections();
-        const levelSection = document.querySelector(".section-2");
-        levelSection.classList.remove("hidden");
-    });
-});
+
 // Close button on high scores section
 closeBtn.addEventListener("click", () => {
     const highScoreSection = document.querySelector(".high-score");
