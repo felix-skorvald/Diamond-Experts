@@ -40,6 +40,7 @@
     font-size: 110px;
     border-bottom: 5px solid #34043c;
     padding-bottom: 0;
+    text-align: center;
 }
 
 .win-gameover .right-word-container {
@@ -63,11 +64,17 @@
 	display: none;
 }
 
-@media (max-width:500px){
+@media (max-width:650px){
     
 .win-gameover .big-title {
-    font-size: 75px;
-    text-align: center;
+    font-size: 60px;
+}
+.win-gameover .user-name {
+    font-size: 40px;
+}
+
+.win-gameover #word-of-game {
+    font-size: 40px;
 }
 
 }
